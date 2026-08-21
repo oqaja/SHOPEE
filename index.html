@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopee Video Upload</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1F1B16">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="brand-row">
+    <div>
+      <h1>Shopee Video</h1>
+      <p class="tagline">Dashboard jadwal upload konten</p>
+    </div>
+    <button class="search-btn" id="search-btn">Cari link ⌕</button>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+  <p class="progress-label" id="progress-label">0/0 SUDAH DIUPLOAD</p>
+</header>
+
+<main id="card-list">
+  <div class="empty-state">Memuat konten...</div>
+</main>
+
+<div class="modal-overlay hidden" id="search-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Cari Link Shopee</h2>
+      <button class="modal-close" id="search-close">✕</button>
+    </div>
+    <input type="text" class="search-input" id="search-input" placeholder="Ketik nama produk...">
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
