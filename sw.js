@@ -1,4 +1,4 @@
-const CACHE_NAME = 'shopee-video-v1';
+const CACHE_NAME = 'shopee-video-v2';
 const SHELL_FILES = ['./index.html', './style.css', './app.js', './manifest.json'];
 
 self.addEventListener('install', (event) => {
@@ -18,11 +18,16 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  // Cuma cache app shell; data dari Apps Script selalu fetch fresh (network-first)
   const url = new URL(event.request.url);
-  if (url.origin === self.location.origin) {
-    event.respondWith(
-      caches.match(event.request).then((cached) => cached || fetch(event.request))
-    );
-  }
+  if (url.origin !== self.location.origin) return;
+
+  event.respondWith(
+    fetch(event.request)
+      .then((res) => {
+        const clone = res.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+        return res;
+      })
+      .catch(() => caches.match(event.request))
+  );
 });
