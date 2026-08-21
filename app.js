@@ -1,5 +1,5 @@
 // GANTI dengan URL Web App hasil deploy Apps Script (Code.gs)
-const APPS_SCRIPT_URL = 'PASTE_URL_WEB_APP_DI_SINI';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby92sn8u-W3P5i1nH3xR8-p6QP0uDuj7q1G27qbngIMFlAQlqhC4AbKLOcsdIrQ4v-a/exec';
 
 const STATUS_BELUM = 'Belum Upload';
 const STATUS_SUDAH = 'Sudah Upload';
