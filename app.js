@@ -38,12 +38,18 @@ async function loadItems() {
   cardList.innerHTML = '<div class="empty-state">Memuat konten...</div>';
   try {
     const res = await fetch(`${APPS_SCRIPT_URL}?action=list`);
-    const data = await res.json();
+    const raw = await res.text();
+    let data;
+    try {
+      data = JSON.parse(raw);
+    } catch (parseErr) {
+      throw new Error('Response bukan JSON (kemungkinan halaman Google, cek deployment access): ' + raw.slice(0, 120));
+    }
     if (data.error) throw new Error(data.error);
     items = data.items || [];
     renderItems();
   } catch (err) {
-    cardList.innerHTML = `<div class="empty-state">Gagal memuat data.<br>${err.message}</div>`;
+    cardList.innerHTML = `<div class="empty-state">Gagal memuat data.<br>${escapeHtml(err.message)}</div>`;
   }
 }
 
