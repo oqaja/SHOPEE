@@ -188,7 +188,7 @@ async function runSearch(q) {
       el.innerHTML = `
         <div class="result-info">
           <div class="result-title">${escapeHtml(r.judul)}</div>
-          <div class="result-meta">${escapeHtml(r.brand)} · Rp${escapeHtml(r.harga)}</div>
+          <div class="result-meta">${escapeHtml(r.brand)} · Rp${escapeHtml(r.harga)} · ${escapeHtml(r.komisiPersen || '-')} · Est. Rp${escapeHtml(r.estKomisi || '-')}</div>
         </div>
         <button class="icon-btn">⧉</button>
       `;
